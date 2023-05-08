@@ -6,6 +6,12 @@ import * as THREE from "three"
 const canvas = document.querySelector("canvas.webgl")
 const scene = new THREE.Scene()
 
+const plane = new THREE.Mesh(
+  new THREE.PlaneGeometry(5, 8),
+  new THREE.MeshBasicMaterial({ color: 0x7393b3 })
+)
+scene.add(plane)
+
 //group
 const group = new THREE.Group()
 scene.add(group)
@@ -24,6 +30,9 @@ const cube2 = new THREE.Mesh(
 group.add(cube2)
 
 //positioning
+plane.rotation.x = -Math.PI * 0.5
+plane.position.y = -0.5
+
 cube1.position.x = 1
 cube2.position.x = 3
 
