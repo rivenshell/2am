@@ -1,6 +1,7 @@
 import * as THREE from "three"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 console.log("i love the abyss")
-
+console.log(OrbitControls)
 //cursor (mouse/finger tracker)
 const cursor = {
   X: 0,
@@ -77,6 +78,9 @@ camera.position.y = 1
 console.log(camera.position.length())
 scene.add(camera)
 
+// orbit controls
+const controls = new OrbitControls(camera, canvas)
+
 //ren
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
@@ -98,10 +102,10 @@ const fluid = () => {
   // cube2.rotation.x += 0.001 * deltaTime
 
   //Update Camera
-  camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
-  camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
-  camera.position.y = cursor.y * 5
-  camera.lookAt(group.position)
+  // camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
+  // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
+  // camera.position.y = cursor.y * 5
+  // camera.lookAt(group.position)
 
   //render
   renderer.render(scene, camera)
