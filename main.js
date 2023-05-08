@@ -12,6 +12,12 @@ const plane = new THREE.Mesh(
 )
 scene.add(plane)
 
+const plane2 = new THREE.Mesh(
+  new THREE.PlaneGeometry(5, 8),
+  new THREE.MeshBasicMaterial({ color: 0x7393b3 })
+)
+scene.add(plane2)
+
 //group
 const group = new THREE.Group()
 scene.add(group)
@@ -32,6 +38,8 @@ group.add(cube2)
 //positioning
 plane.rotation.x = -Math.PI * 0.5
 plane.position.y = -0.5
+
+plane2.position.z = -Math.PI * 0.8
 
 cube1.position.x = 1
 cube2.position.x = 3
