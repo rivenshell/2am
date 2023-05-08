@@ -6,7 +6,7 @@
 /* add wetris font */
 @font-face {
   font-family: "wetris";
-  src: url("wetris.ttf") format("truetype");
+  src: url("./static/wetris-regular.ttf") format("truetype");
 }
 
 .text {
