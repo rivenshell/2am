@@ -1,5 +1,27 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: black;
+}
+
+/* add wetris font */
+@font-face {
+  font-family: "wetris";
+  src: url("wetris.ttf") format("truetype");
+}
+
+.text {
+  font-family: "wetris";
+  font-size: 50px;
+  color: rgb(253, 2, 149);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
 }
