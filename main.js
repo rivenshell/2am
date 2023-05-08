@@ -67,11 +67,21 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 
+//time
+let time = Date.now()
+
 //animation
 const fluid = () => {
+  //time
+  const currentTime = Date.now()
+  const deltaTime = currentTime - time
+  time = currentTime
+
+  console.log(deltaTime)
+
   //update
-  group.rotation.x += 0.01
-  cube2.rotation.y += 0.01
+  group.rotation.x += 0.001 * deltaTime
+  cube2.rotation.x += 0.001 * deltaTime
   //render
   renderer.render(scene, camera)
   window.requestAnimationFrame(fluid)
