@@ -8,7 +8,7 @@ const cursor = {
 }
 window.addEventListener("mousemove", (event) => {
   cursor.x = event.clientX / sizes.width - 0.5
-  cursor.y = event.clientY / sizes.height - 0.5
+  cursor.y = -(event.clientY / sizes.height - 0.5)
 })
 
 //canvas
@@ -54,6 +54,7 @@ cube1.position.x = 1
 cube2.position.x = 3
 
 group.position.y = Math.PI * 0.2
+group.position.x = -0.5
 
 const axesHelper = new THREE.AxesHelper(1)
 scene.add(axesHelper)
@@ -97,8 +98,10 @@ const fluid = () => {
   // cube2.rotation.x += 0.001 * deltaTime
 
   //Update Camera
-  camera.position.x = cursor.x * 3
-  camera.position.y = -cursor.y * 3
+  camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
+  camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
+  camera.position.y = cursor.y * 5
+  camera.lookAt(group.position)
 
   //render
   renderer.render(scene, camera)
