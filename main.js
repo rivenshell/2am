@@ -1,6 +1,15 @@
+import * as THREE from "three"
 console.log("i love the abyss")
 
-import * as THREE from "three"
+//cursor (mouse/finger tracker)
+const cursor = {
+  X: 0,
+  Y: 0,
+}
+window.addEventListener("mousemove", (event) => {
+  cursor.x = event.clientX / sizes.width - 0.5
+  cursor.y = event.clientY / sizes.height - 0.5
+})
 
 //canvas
 const canvas = document.querySelector("canvas.webgl")
@@ -51,14 +60,20 @@ scene.add(axesHelper)
 
 const sizes = {
   width: 800,
-  height: 600,
+  height: 720,
 }
 
 //cam
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+const camera = new THREE.PerspectiveCamera(
+  90,
+  sizes.width / sizes.height,
+  0.1,
+  100
+)
 camera.position.z = 3
-camera.position.x = 1
+camera.position.x = 0.5
 camera.position.y = 1
+console.log(camera.position.length())
 scene.add(camera)
 
 //ren
@@ -77,11 +92,14 @@ const fluid = () => {
   const deltaTime = currentTime - time
   time = currentTime
 
-  console.log(deltaTime)
-
   //update
-  group.rotation.x += 0.001 * deltaTime
-  cube2.rotation.x += 0.001 * deltaTime
+  // group.rotation.x += 0.001 * deltaTime
+  // cube2.rotation.x += 0.001 * deltaTime
+
+  //Update Camera
+  camera.position.x = cursor.x * 3
+  camera.position.y = -cursor.y * 3
+
   //render
   renderer.render(scene, camera)
   window.requestAnimationFrame(fluid)
