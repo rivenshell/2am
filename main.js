@@ -61,8 +61,8 @@ const axesHelper = new THREE.AxesHelper(1)
 scene.add(axesHelper)
 
 const sizes = {
-  width: 800,
-  height: 720,
+  width: window.innerWidth,
+  height: window.innerHeight,
 }
 
 //cam
